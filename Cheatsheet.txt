@@ -1,0 +1,17 @@
+touch .gitignore
+git config --global user.name "Amrit Tripathi"
+git config --global user.email "amrittripathidirect@gmail.com"
+git init
+git add .
+git commit -m "Initial Commit"
+git status #ToSeeStatus
+git remote add origin <SSH address>
+ssh-keygen -t ed25519 -C "amrittripathidirect@gmail.com"
+cat <path to id_rsa.pub> #AddThisKeyToYourGitHubAccount
+git push origin master #UploadedOnYourGitHub
+
+*****How To Update GitHub Repository********
+git status #ToSeeTheChanges
+git add .
+git commmit -m "Added <New File Name>"
+git push origin master
