@@ -1,0 +1,12 @@
+long long maxSubarraySum(int arr[], int n)
+{
+    long long msf = arr[0], meh = arr[0];
+    for(int i=1; i<n; i++)
+    {
+        meh+=arr[i];
+        if(meh>msf) msf=meh;
+        if(meh<0) meh=0;
+    }
+    if(msf<0) msf=0;
+    return msf;
+}
