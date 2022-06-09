@@ -1,0 +1,18 @@
+void change(vector<vector<int>> &mat, int i1, int il, int j1, int jl)
+{
+    for(int j=jl-1; j>=j1; j--)
+        swap(mat[i1][j],mat[i1][j+1]);
+    for(int i=i1+1; i<=il; i++)
+        swap(mat[i][j1],mat[i-1][j1]);
+    for(int j=j1; j<=jl-1; j++)
+        swap(mat[il][j],mat[il][j+1]);
+    for(int i=il; i>=i1+2; i--)
+        swap(mat[i][jl],mat[i-1][jl]);
+}
+
+void rotateMatrix(vector<vector<int>> &mat, int n, int m)
+{
+    int i1=0, il=n-1, j1=0, jl=m-1;
+    while(il>i1 && jl>j1)
+        change(mat, i1++, il--, j1++, jl--);
+}
