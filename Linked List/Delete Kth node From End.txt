@@ -1,0 +1,62 @@
+LinkedListNode<int>* removeKthNode(LinkedListNode<int> *head, int K)
+{
+    if(head==NULL || K==0) return head;
+    LinkedListNode<int> *t1 = head;
+    LinkedListNode<int> *t2 = head;
+    while(K--) t2 = t2->next;
+    if(t2==NULL)
+    {
+        LinkedListNode<int> *temp = head;
+        head = temp->next;
+        temp->next = NULL;
+        delete temp;
+        return head;
+    }
+    while(t2->next!=NULL)
+    {
+        t1 = t1->next;
+        t2 = t2->next;
+    }
+    t1->next = t1->next->next;
+    return head;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+int getLength(LinkedListNode<int> *head)
+{
+    LinkedListNode<int> *temp = head;
+    int cnt = 0;
+    while(temp!=NULL)
+    {
+        cnt++;
+        temp = temp->next;
+    }
+    return cnt;
+}
+LinkedListNode<int>* removeKthNode(LinkedListNode<int> *head, int K)
+{
+    if(head==NULL || K==0) return head;
+    int n = getLength(head);
+    if(K==n)
+    {
+        LinkedListNode<int> *temp = head;
+        head = temp->next;
+        temp->next = NULL;
+        delete temp;
+        return head;
+    }
+    int p = n-K;
+    LinkedListNode<int> *temp = head;
+    int cnt = 1;
+    while(cnt<p)
+    {
+        cnt++;
+        temp = temp->next;
+    }
+    LinkedListNode<int> *nodeToDelete = temp->next;
+    temp->next = nodeToDelete->next;
+    nodeToDelete->next = NULL;
+    delete nodeToDelete;
+    return head;
+}
