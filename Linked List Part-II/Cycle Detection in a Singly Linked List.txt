@@ -1,0 +1,13 @@
+bool detectCycle(Node *head)
+{
+	if(head == NULL) return false;
+    Node* t1 = head;
+    Node* t2 = head;
+    while(t2!=NULL && t2->next!=NULL)
+    {
+        t2 = t2->next->next;
+        t1 = t1->next;
+        if(t1==t2) return true;
+    }
+    return false;
+}
