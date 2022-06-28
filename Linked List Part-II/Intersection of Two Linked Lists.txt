@@ -1,0 +1,17 @@
+int findIntersection(Node *firstHead, Node *secondHead)
+{
+    unordered_set<Node*> s;
+    Node* temp = firstHead;
+    while(temp!=NULL)
+    {
+        s.insert(temp);
+        temp = temp->next;
+    }
+    temp = secondHead;
+    while(temp!=NULL)
+    {
+        if(s.find(temp)!=s.end()) return temp->data;
+        temp = temp->next;
+    }
+    return -1;
+}
