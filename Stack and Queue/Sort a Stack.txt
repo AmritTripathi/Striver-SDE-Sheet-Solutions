@@ -1,0 +1,21 @@
+void pushSort(stack<int> &s, int x)
+{
+    if(s.empty() || s.top()<=x){
+        s.push(x);
+        return;
+    }
+    
+    int top = s.top();
+    s.pop();
+    pushSort(s,x);
+    s.push(top);
+}
+
+void sortStack(stack<int> &s)
+{
+    if(s.empty()) return;
+    int top = s.top();
+    s.pop();
+    sortStack(s);
+    pushSort(s, top);
+}

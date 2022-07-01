@@ -1,0 +1,30 @@
+#include<stack>
+int findCelebrity(int n) {
+ 	stack<int> s;
+    for(int i=0; i<n; i++) s.push(i);
+    while(s.size()>1){
+        int a = s.top();
+        s.pop();
+        int b = s.top();
+        s.pop();
+        if(knows(a,b)) s.push(b);
+        else s.push(a);
+    }
+    
+    int candidate = s.top();
+    int cnt = 0;
+    for(int i=0; i<n; i++){
+        if(i==candidate) continue;
+        if(knows(i, candidate)) cnt++;
+    }
+    if(cnt!=n-1) return -1;
+    
+    cnt=0;
+    for(int i=0; i<n; i++){
+        if(i==candidate) continue;
+        if(knows(candidate, i)) cnt++;
+    }
+    if(cnt!=0) return -1;
+    
+    return candidate;
+}

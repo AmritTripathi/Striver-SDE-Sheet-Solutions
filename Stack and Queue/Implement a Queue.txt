@@ -1,0 +1,34 @@
+class Queue {
+public:
+    int *arr = new int[10000];
+    int qfront=0;
+    int qrear=0;
+    Queue() {
+        
+    }
+
+    bool isEmpty() {
+        if(qfront==qrear) return 1;
+        return 0;
+    }
+
+    void enqueue(int data) {
+        if(qrear!=10000) arr[qrear++] = data;
+    }
+
+    int dequeue() {
+        if(qfront==qrear) return -1;
+        int frnt = arr[qfront];
+        arr[qfront++]=-1;
+        if(qfront==qrear){
+            qfront=0;
+            qrear=0;
+        }
+        return frnt;
+    }
+
+    int front() {
+        if(qfront==qrear) return -1;
+        return arr[qfront];
+    }
+};
